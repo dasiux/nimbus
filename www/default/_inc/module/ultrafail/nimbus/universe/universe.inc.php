@@ -2,6 +2,8 @@
 
 namespace ultrafail\nimbus\universe;
 
+use \ultrafail\nimbus\game;
+
 class universe extends core {
 
     protected $name;                    // String
@@ -11,8 +13,13 @@ class universe extends core {
         'name'
     );
 
+    protected $filter_children;
+
     // Initialize
     public function __construct ($id,$parent,$data,$init=false) {
+        $this->filter_children = array(
+            'ultrafail_nimbus_universe_universe' => array(game::$player_id)
+        );
         parent::__construct($id,$parent,$data,$init);
     }
 

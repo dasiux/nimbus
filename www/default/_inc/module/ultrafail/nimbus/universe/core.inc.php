@@ -21,6 +21,8 @@ abstract class core {
 
     protected $sql_type_select = false;
 
+    protected $filter_children = array();
+
     // Initialize
     public function __construct ($id,$data,$init=false) {
         array_push($this->readable,'id','type','parent_id','location_id','children');
@@ -29,6 +31,9 @@ abstract class core {
         ));
         $this->id = $id;
         $this->parseData($data);
+
+        game::registerTypeId($id,$this->getType());
+
         $this->loadFromDB();
 
         if ($init&&in_array($this->getType(),game::$init_end_class)) {
@@ -38,7 +43,11 @@ abstract class core {
         }
 
         if (!$this->prevent_load_children) {
-            $this->children = game::loadChildren($this->id);
+            $filter = false;
+            if (isset($this->filter_children[$this->getType()])) {
+                $filter = $this->filter_children[$this->getType()];
+            }
+            $this->children = game::loadChildren($this->id,$filter);
         }
     }
 
@@ -113,7 +122,10 @@ abstract class core {
             $this->$eventHandler($event);
         }
         if (!$event->preventBubbleUp) {
-            $this->parent->callEvent($name,$event);
+            $parent = game::getObject($this->parent_id);
+            if ($parent) {
+                $parent->callEvent($name,$event);
+            }
         }
         if (!$event->preventBubbleDown&&count($this->children)) {
             $limit = count($event->bubbleDownTypes);
