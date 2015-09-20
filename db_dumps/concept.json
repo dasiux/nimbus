@@ -1,0 +1,53 @@
+{
+  "objects":{
+    "id":"INT()",
+    "parent_id":"INT() NOT NULL DEFAULT 0",
+    "type":"VARCHAR(255)",
+    "location_id":"INT() NOT NULL DEFAULT 0"
+  },
+  "players":{
+    "id":"INT()",
+    "name":"VARCHAR(64)",
+    "universe_id":"INT()",
+    "faction_id":"INT()",
+    "score":"INT()",
+    "active_object_id":"INT()"
+  },
+  /* Data tables */
+  "locations":{
+    "id":"INT()",
+    "x":"FLOAT()",
+    "y":"FLOAT()",
+    "z":"FLOAT()"
+  },
+  /* Object tables */
+  "objects_planet":{
+    "id":"INT()",
+    "name":"VARCHAR(128)",
+    "fields":"SMALLINT()"
+  },
+  "objects_moon":{
+    "id":"INT()",
+    "name":"VARCHAR(128)",
+    "fields":"SMALLINT()"
+  },
+  "objects_sun":{
+    "id":"INT()",
+    "name":"VARCHAR(128)",
+    "fields":"SMALLINT()"
+  },
+  "objects_resource":{
+    "id":"INT()",
+    "name":"VARCHAR(64)",
+    "deposit":"FLOAT()",
+    "stored":"FLOAT()",
+    "max":"INT()"
+  },
+  "objects_building":{
+    "id":"INT()",
+    "name":"VARCHAR(64)",
+    "building_type":"VARCHAR(64)",
+    "level":"SMALLINT()",
+    "upgrading_since":"TIMESTAMP"
+  }
+}
