@@ -2,7 +2,7 @@
   "objects":{
     "id":"INT()",
     "parent_id":"INT() NOT NULL DEFAULT 0",
-    "type":"VARCHAR(255)",
+    "type":"VARCHAR(128)",
     "location_id":"INT() NOT NULL DEFAULT 0"
   },
   "players":{

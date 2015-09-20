@@ -1,0 +1,56 @@
+### Project ###
+
+### Vagrant ###
+.vagrant
+
+### Windows ###
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+### IntelliJ based IDE's like PhpStorm ###
+*.iml
+*.ipr
+*.iws
+.idea/
+
+### NetBeans ###
+nbproject/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+build.xml
+build.properties
+
+### SublimeText ###
+*.sublime-workspace
+
+# Much credit to http://gitignore.io for many of these
+
+config/config.yaml
+node_modules/
+
+
+### sqf Module only ###
+db_dumps/test.sql
+www/default/.htaccess
+www/default/_public/*
+www/default/_cfg/*
+www/default/_logs/*
+
+www/default/_inc/*.php
+www/default/_inc/classes/*
+www/default/_inc/custom/*
+www/default/_inc/module/sqf/*
+
+www/default/_templates/base/*

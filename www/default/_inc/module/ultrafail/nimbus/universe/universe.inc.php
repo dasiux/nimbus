@@ -2,7 +2,7 @@
 
 namespace ultrafail\nimbus\universe;
 
-class player extends core {
+class universe extends core {
 
     protected $name;                    // String
 
@@ -12,8 +12,8 @@ class player extends core {
     );
 
     // Initialize
-    public function __construct ($id,$parent,$data) {
-        parent::__construct($id,$parent,$data);
+    public function __construct ($id,$parent,$data,$init=false) {
+        parent::__construct($id,$parent,$data,$init);
     }
 
     public function __destruct () {

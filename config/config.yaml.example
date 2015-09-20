@@ -1,0 +1,174 @@
+####################################
+### Virtual Machine
+###
+### Only change these if you are experienced with VMs or are instructed to do so.
+####################################
+vagrant:
+  box: ubuntu/trusty64
+  box_url: https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box
+  box_port: 80
+  box_port_ssl: 443
+  box_ip: 192.168.2.70
+  ssh_shell: bash -c 'BASH_ENV=/etc/profile exec bash'
+  ssh_username: vagrant
+  vm_name: nimbus
+  vm_memory: 1024
+  vm_cpu: 80
+  vm_webroot: www
+  vm_docroot: /var/www
+  vm_hostname: base.dev
+
+####################################
+### Ubuntu Linux
+###
+### These packages install before anything else via apt-get. You may add some, but you shouldn't remove any or install one that uninstalls another.
+####################################
+syspackages:
+  - build-essential
+  - openssl
+  - unzip
+  - git
+  - curl
+  - php5-dev
+  - php-pear
+  - libyaml-dev
+  - libgnutls-openssl27
+  - libgnutls26
+  - ssmtp
+
+####################################
+### Email
+### 
+### These settings work for gmail. Just change your email address in 'root' and 'AuthUser', and password in 'AuthPass'.
+### If using a different SMTP server (your school, company, etc), you'll need to change 'mailhub' and 'rewriteDomain' and possibly the two 'Use*' lines too.
+### More info: http://manpages.ubuntu.com/manpages/utopic/man5/ssmtp.conf.5.html
+###
+### The "Real Name" that shows in front of the "from email" will be "vagrant" unless you change it in the header when sending.
+### Do "vagrant ssh" and paste the following command to test sending: php -r 'mail("recipient@gmail.com", "The Subject", "The Body", "From: Real Name");'
+### In the above test, be sure to change the recipient to a real email you own so you can check if it worked!
+####################################
+email:
+  mailhub: smtp.gmail.com:587
+  hostname: localhost
+  rewriteDomain: gmail.com
+  root: username@gmail.com
+  AuthUser: username@gmail.com
+  AuthPass: hunter2
+  UseSTARTTLS: 'YES'
+  UseTLS: 'YES'
+  FromLineOverride: 'YES'
+
+####################################
+### Modules
+###
+### Some default modules for a well-rounded Apache and PHP setup. You may add others.
+####################################
+apachemodules:
+  - rewrite
+  - ssl
+phpmodules:
+  - php5-cgi
+  - php5-cli
+  - php5-mysql
+  - php5-sqlite
+  - php5-imagick
+  - php5-mcrypt
+  - php5-imap
+  - php5-curl
+  - php5-json
+  - php5-gd
+  - php5-xmlrpc
+  - php5-xdebug
+  - libapache2-mod-php5
+
+####################################
+### Database
+###
+### For username "root". You have only one chance to change the root password. Do it before typing "vagrant up" for the first time.
+####################################
+mysql:
+  port: 3306
+  password: vagrant
+
+####################################
+### SSL Certificate
+###
+### You'll get a security warning in the browser when testing https sites you build, but it will work. You can customize this info, but it's not crucial as you're the only one who sees it.
+####################################
+ssl:
+  country: DE
+  state: Hamburg
+  city: Hamburg
+  company: sekeido
+  section: Information Technology
+  domain: 192.168.2.70
+  email: info@sekeido.com
+
+####################################
+### Debugging
+###
+### Errors are for the way PHP displays errors, like what should happen if you try to echo out an unset variable.
+### Xdebug should only be customized if your IDE doesn't work with these default settings.
+####################################
+errors:
+  - display_errors = On
+  - error_reporting = E_ALL
+  - display_startup_errors = On
+  - log_errors = On
+  - log_errors_max_len = 1024
+  - ignore_repeated_errors = Off
+  - ignore_repeated_source = Off
+  - report_memleaks = On
+  - html_errors = On
+  - docref_root = "http://www.php.net/manual/en/"
+  - docref_ext = .php
+  - error_log = /var/log/php_errors.log
+  - error_prepend_string = "<span style='color:red'>"
+  - error_append_string = "</span>"
+xdebug:
+  - zend_extension = xdebug.so
+  - xdebug.remote_enable = 1
+  - xdebug.remote_host = localhost
+  - xdebug.remote_port = 9000
+  - xdebug.remote_connect_back = 1
+  - xdebug.remote_handler = dbgp
+  - xdebug.remote_mode = req
+  - xdebug.remote_log = /var/log/php5-xdebug.log
+  - xdebug.profiler_enable = 0
+  - xdebug.profiler_output_dir = /tmp
+  - xdebug.profiler_output_name = cachegrind.out.%t.%p
+
+####################################
+### Directory Rules
+###
+### Some rules for Apache. You shouldn't need to change these unless you have problems with .htaccess files.
+####################################
+directory:
+  - Options Indexes FollowSymLinks MultiViews
+  - AllowOverride All
+  - Order allow,deny
+  - Allow from all
+
+####################################
+### Virtual Hosts
+###
+### Vhosts let you set up nicer URLs instead of using http://dev/foldername all the time.
+###
+### Be sure to mirror changes here in your computer's hosts file too!
+### Windows: C:\Windows\System32\Drivers\etc\hosts (Open your text editor as Administrator first (Right click and choose "Run as administrator"))
+### OSX: sudo nano /private/etc/hosts (From the terminal)
+###
+### Open the hosts file and make it look something like:
+### 127.0.0.1    localhost localhost.dev www.localhost.dev default default.dev www.default.dev
+### 127.0.0.1    dev dev.dev www.dev.dev
+### 127.0.0.1    anothersite anothersite.dev www.anothersite.dev
+###
+### Because localhost is mapped to an example default site, it's crucial you add dev to the hosts file (As demonstrated above) to access folders that don't have a vhost.
+### Also don't forget to run "vagrant provision" for any changes.
+####################################
+vhosts:
+  -
+    ServerName: localhost
+    ServerAlias: default default.dev www.default.dev nimbus.dev www.nimbus.dev
+    DocumentRoot: /var/www/default
+    ServerAdmin: webmaster@localhost

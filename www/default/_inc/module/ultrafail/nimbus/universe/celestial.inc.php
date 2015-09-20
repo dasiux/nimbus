@@ -24,7 +24,7 @@ abstract class celestial extends core {
     );
 
     // Initialize
-    public function __construct ($id,$parent,$data,array $readable=array(),$last_update_timestamp=0,$fields=0,array $buildings=array(),array $resources=array()) {
+    public function __construct ($id,$parent,$data,$init=false,array $readable=array(),$last_update_timestamp=0,$fields=0,array $buildings=array(),array $resources=array()) {
         parent::__construct($id,$parent,$data);
         if (count($readable)) {$this->readable = array_merge($this->readable,$readable);}
         $this->last_update_timestamp = $last_update_timestamp;

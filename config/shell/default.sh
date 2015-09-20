@@ -1,0 +1,1 @@
+cat /vagrant/config/shell/info.txt
