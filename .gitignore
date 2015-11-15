@@ -43,6 +43,7 @@ node_modules/
 
 ### sqf Module only ###
 db_dumps/test.sql
+www/old-default/*
 www/default/.htaccess
 www/default/_public/*
 www/default/_cfg/*
