@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>nimbus</title>
+    <meta name="author" content="sqrl-forge frenetic augmentation, www.sqrl-forge.com" />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="_public/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="_public/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
+    <link href="_public/_css/nimbus/layout.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script type="text/javascript"></script>
+    <!--[if lt IE 9]><script type="text/javascript"></script><![endif]-->
+    <script src="_public/_js/jquery-2.1.4.min.js" type="text/javascript" language="javascript"></script>
+    <script src="_public/_js/sqf-2.0.js" type="text/javascript" language="javascript"></script>
+
+    <style type="text/css">
+        *,body {
+            color:#fff;
+            font-family:monospace;
+        }
+        #background {
+            position:absolute;
+            left:0px;
+            top:0px;
+            width:100%;
+            height:100%;
+
+            background-color:#000;
+        }
+        /* info-block */
+        #info-block {
+            position:absolute;
+            left:0px;
+            top:0px;
+            border-right:5px rgba(80,80,250,0.8);
+            border-bottom:5px rgba(80,80,250,0.8);
+            border-radius:0 0 10px 0;
+            background-color:rgba(30,30,200,0.4);
+        }
+        #info-block .logo {
+            float:left;
+            width:80px;
+            height:60px;
+            background-color:#f00;
+        }
+        #info-block .logo span {
+            display:inline-block;
+            padding:1em;
+        }
+        #info-block .universe {
+            float:left;
+            padding:1em;
+        }
+        #info-block .universe span {
+            display:block;
+        }
+        #info-block .universe span.name {
+            padding-bottom:1em;
+        }
+        #info-block .user {
+            clear:both;
+            border-top:1px solid #fff;
+            padding:1em;
+            margin-right:1em;
+        }
+        #info-block .user .rank:before {
+            content:'[';
+        }
+        #info-block .user .rank:after {
+            content:']';
+        }
+        /* data-block */
+        #data-block {
+            position:absolute;
+            left:250px;
+            top:0px;
+            padding:0.3em 0.5em;
+            border-left:5px rgba(80,80,250,0.8);
+            border-right:5px rgba(80,80,250,0.8);
+            border-bottom:5px rgba(80,80,250,0.8);
+            border-radius:0 0 10px 10px;
+            background-color:rgba(30,30,200,0.4);
+        }
+        #data-block .selected-planet {
+            padding:0.3em 0.5em;
+            font-size:1em;
+            background-color:#000;
+            border:1px solid #fff;
+            margin-left:0.5em;
+        }
+        #data-block .resources {
+            display:block;
+            padding:0;
+            margin:0;
+            margin-top:0.5em;
+        }
+        #data-block .resources li {
+            list-style-type:none;
+            display:inline-block;
+            padding:0.3em 0.5em;
+        }
+        /* action-block */
+        #action-block {
+            position:absolute;
+            left:0px;
+            top:150px;
+            padding:0.3em 0.5em;
+            border-top:5px rgba(80,80,250,0.8);
+            border-right:5px rgba(80,80,250,0.8);
+            border-bottom:5px rgba(80,80,250,0.8);
+            border-radius:0 10px 10px 0;
+            background-color:rgba(30,30,200,0.4);
+        }
+        #action-block .planet {
+            display:block;
+            padding:0;
+            margin:0;
+        }
+        #action-block .planet li {
+            list-style-type:none;
+            display:block;
+            margin:0;
+            padding:0.3em 0.5em;
+        }
+        /* action-block */
+        #chat-block {
+            position:absolute;
+            right:0px;
+            top:50%;
+            transform:translateY(-50%);
+            padding:0.3em 0;
+            border-top:5px rgba(80,80,250,0.8);
+            border-right:5px rgba(80,80,250,0.8);
+            border-bottom:5px rgba(80,80,250,0.8);
+            border-radius:10px 0 0 10px;
+            background-color:rgba(30,30,200,0.4);
+        }
+        #chat-block .toggle-visibility {
+            float:right;
+        }
+        #chat-block .chat {
+            display:none;
+            padding:0.3em 0.5em;
+        }
+        #chat-block .chat .messages {
+            padding:0.3em 0.5em;
+            font-size:1em;
+            background-color:#000;
+            border:1px solid #fff;
+            margin-bottom:0.5em;
+            border-radius:10px 0 0 0;
+            height:100px;
+        }
+        #chat-block .chat .input {
+            white-space:nowrap;
+        }
+        #chat-block .chat .input .message {
+            padding:0.3em 0.5em;
+            font-size:1em;
+            background-color:#000;
+            border:1px solid #fff;
+            border-radius:0 0 0 10px;
+        }
+        #chat-block .chat .input .send {
+            display:inline-block;
+        }
+    </style>
+
+</head>
+<body id="init">
+    <div id="background">
+        <canvas id="map"></canvas>
+    </div>
+    <!-- game and player information -->
+    <div id="info-block">
+        <div class="logo"><span>nimbus</span></div>
+        <div class="universe">
+            <span class="name">test-universe</span>
+            <span class="time">00:00:00</span>
+        </div>
+        <div class="user">
+            <a class="faction" href="#"><span class="name">Empire</span><span class="rank">1</span></a>
+            <a class="player" href="#"><span class="name">siux</span><span class="rank">1</span></a>
+        </div>
+    </div>
+    <!-- resources information -->
+    <div id="data-block">
+        <input class="selected-planet" type="text" value="Homeplanet" />
+        <ul class="resources">
+            <li class="metal"><span>Metal</span></li>
+            <li class="crystal"><span>Crystal</span></li>
+            <li class="hydrogen"><span>Hydrogen</span></li>
+        </ul>
+    </div>
+    <!-- interaction menu -->
+    <div id="action-block">
+        <ul class="planet">
+            <li class="buildings"><a href="#"><span>Buildings</span></a></li>
+            <li class="production"><a href="#"><span>Production</span></a></li>
+            <li class="research"><a href="#"><span>Research</span></a></li>
+            <li class="fleets"><a href="#"><span>Fleets</span></a></li>
+        </ul>
+    </div>
+    <!-- chat -->
+    <div id="chat-block">
+        <input class="toggle-visibility" type="checkbox" />
+        <div class="chat">
+            <div class="messages">&hellip;</div>
+            <div class="input">
+                <input class="message" type="text" value="" />
+                <a class="send" href="#"><span>send</span></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
