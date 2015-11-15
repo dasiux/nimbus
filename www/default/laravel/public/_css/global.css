@@ -1,0 +1,114 @@
+body {
+    font-size:10px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    color:#fff;
+    background-color:#000;
+    margin:0;
+    padding:0;
+}
+#page-header {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    background-color:#234290;
+    color:#fff;
+    border-bottom:1px solid #fff;
+}
+#page-header:after {
+    content:'';
+    clear:both;
+}
+
+#page-navigation {
+    float:left;
+    padding:0;
+    margin:0;
+}
+#page-navigation li {
+    list-style-type:none;
+    float:left;
+}
+#page-navigation li a {
+    display:block;
+    padding:0.3em 0.5em;
+    text-decoration:none;
+    font-weight:bold;
+    color:#fff;
+    background-color:#234290;
+    transition:color 0.5s, background-color 0.5s;
+}
+#page-navigation li a:hover {
+    color:#234290;
+    background-color:#fff;
+}
+#page-navigation li.profile a:before {
+    content:'[';
+}
+#page-navigation li.profile a:after {
+    content:']';
+}
+
+#page-messages {
+    float:left;
+    padding:0 0 0 10px;
+    margin:0;
+}
+#page-messages li {
+    list-style-type:none;
+    float:left;
+    padding:0.3em 0.5em;
+}
+
+#page-contact {
+    float:right;
+    padding:0.3em 0.5em;
+    text-decoration:none;
+    font-weight:bold;
+    color:#fff;
+    background-color:#234290;
+    transition:color 0.5s, background-color 0.5s;
+}
+#page-contact:hover {
+    color:#234290;
+    background-color:#fff;
+}
+
+/* Page content */
+.page-content {
+    margin:auto;
+    padding:30px 10% 0;
+}
+
+/* Index */
+#page-index {}
+#page-index h1 {
+    font-size:6em;
+    text-shadow:0 0 0.5em #fff;
+    text-align:center;
+}
+
+/* Login */
+#page-login {}
+#page-login form .row {
+    margin-top:0.5em;
+}
+#page-login form .label {
+    display:inline-block;
+    width:6em;
+    margin:0;
+    padding:0.3em 0.5em;
+    background-color:#234290;
+    border:1px solid #234290;
+}
+#page-login form input {
+    display:inline-block;
+    margin:0;
+    padding:0.3em 0.5em;
+    border:none;
+    color:#234290;
+    background-color:#fff;
+}
+#page-login form input[type=submit] {
+    color:#fff;
+}

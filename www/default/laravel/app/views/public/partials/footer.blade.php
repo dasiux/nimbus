@@ -1,0 +1,2 @@
+@if(Auth::check())
+@endif
