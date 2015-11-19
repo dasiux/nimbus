@@ -40,6 +40,8 @@ build.properties
 config/config.yaml
 node_modules/
 
+### temp ###
+temp/
 
 ### sqf Module only ###
 db_dumps/test.sql

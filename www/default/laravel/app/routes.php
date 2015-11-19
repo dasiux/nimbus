@@ -37,9 +37,13 @@ Route::group(array('before'=>'auth','prefix'=>'admin'),function(){
 /* Api routes */
 Route::group(array('before'=>'auth','prefix'=>'api'), function(){
     /* Resource routes */
-    Route::resource('resource', 'ResourceController');
+    Route::resource('player', 'PlayerController');
+});
+
+/* Game routes */
+Route::group(array('before'=>'auth','prefix'=>'game'),function(){
+    Route::controller('/', 'GameController');
 });
 
 /* Public index */
 Route::controller('/', 'PublicController');
-

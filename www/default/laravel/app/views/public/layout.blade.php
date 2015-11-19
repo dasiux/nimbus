@@ -12,6 +12,8 @@
     {{ HTML::style('_css/global.css'); }}
     <!-- Scripts -->
     {{ HTML::script('https://code.jquery.com/jquery-2.1.4.min.js') }}
+    {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js') }}
+    {{ HTML::script('/_js/nimbus.js') }}
 </head>
 <body>
     @yield('content')

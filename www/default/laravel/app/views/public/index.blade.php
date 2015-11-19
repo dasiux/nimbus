@@ -9,6 +9,8 @@
         @forelse($universes as $universe)
             <li>
                 <span class="name">{{ $universe->name }}</span>
+                <a class="join" href="/game/uni/{{ $universe->id }}">join</a>
+                <a class="join" href="/game/map/{{ $universe->id }}">map</a>
             </li>
         @empty
 
