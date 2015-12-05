@@ -3,6 +3,7 @@
 		starTyp
 		pos[x,y,z]
 		dia
+		star !!!!
 		planets[]
 			pClass
 			athmo {}

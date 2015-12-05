@@ -1,0 +1,14 @@
+Fragen:
+	atmo litho
+	??sonnen landbar auch wenns idiotisch ist? so wie auf planeten die aus flüssiger lave bestehen
+	ringe? trümmerfelder? wird können
+	terraforming?
+	wenn du nur abstand bekommst, ista dann nicht auch kompliziert mit mehreren objekten?
+
+TODO:
+	sterne mit eigenem abstand zur achse
+	stern objekte
+	sterne unterschiedlicher dia
+	vegetation
+	nur besondere typen in sonne
+	sonnentypen als array
