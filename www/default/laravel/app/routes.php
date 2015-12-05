@@ -35,9 +35,14 @@ Route::group(array('before'=>'auth','prefix'=>'admin'),function(){
 });
 
 /* Api routes */
-Route::group(array('before'=>'auth','prefix'=>'api'), function(){
+Route::group(array('before'=>'auth','prefix'=>'api'),function(){
     /* Resource routes */
-    Route::resource('player', 'PlayerController');
+    Route::resource('player','PlayerController');
+    /* Interface data */
+    Route::group(array('prefix'=>'interface'),function(){
+        Route::resource('star','DataStarController');
+        Route::resource('planet','DataPlanetController');
+    });
 });
 
 /* Game routes */

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>nimbus</title>
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- CSS -->
+    <link media="all" type="text/css" rel="stylesheet" href="_css/global.css">
+
+    <!-- Scripts -->
+    <!-- https://code.jquery.com/jquery-2.1.4.min.js -->
+    <script src="_js/jquery-2.1.4.min.js"></script>
+
+    <!-- https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js -->
+    <script src="_js/three.min.js"></script>
+
+    <script src="_js/three/OrbitControls.js"></script>
+
+    <script src="_js/three/Projector.js"></script>
+
+    <script src="_js/Tween.js"></script>
+
+    <script src="_js/nimbus.js"></script>
+
+</head>
+<body>
+<div id="nbsTHREEmap"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        nimbus.init('map',{
+            uni:1,
+            user:4
+        });
+    });
+</script>
+<div id="page-header">
+    <ul id="page-navigation">
+        <li class="index"><a href="/">nimbus</a></li>
+        <li class="profile"><a href="/profile">player</a></li>
+        <li class="logout"><a href="/logout">logout</a></li>
+    </ul>
+
+    <ul id="page-messages" class="sqfUiMessages">
+        <li>&hellip;</li>
+    </ul>
+
+    <a href="/contact" id="page-contact">&copy;</a>
+</div></body>
+</html>

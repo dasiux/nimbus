@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>nimbus</title>
@@ -11,8 +12,13 @@
     <!-- CSS -->
     {{ HTML::style('_css/global.css'); }}
     <!-- Scripts -->
-    {{ HTML::script('https://code.jquery.com/jquery-2.1.4.min.js') }}
-    {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js') }}
+    <!-- https://code.jquery.com/jquery-2.1.4.min.js -->
+    {{ HTML::script('/_js/jquery-2.1.4.min.js') }}
+    <!-- https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js -->
+    {{ HTML::script('/_js/three.min.js') }}
+    {{ HTML::script('/_js/three/OrbitControls.js') }}
+    {{ HTML::script('/_js/three/Projector.js') }}
+    {{ HTML::script('/_js/Tween.js') }}
     {{ HTML::script('/_js/nimbus.js') }}
 </head>
 <body>
