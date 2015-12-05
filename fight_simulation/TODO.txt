@@ -1,0 +1,20 @@
+WENDIGKEIT wer zu erst beginnt
+
+kampfkraft berechnen
+	es müssen eingebaute module zusammen gerechnet werden
+
+flotten kampf
+	aktuell kämpen immer nur 2 schiffe gegen einander
+	jedes schiff muss sich einen gegner suchen, der sich für ihn lohnt, fliehen oder eine defensif position einnehmen
+	
+
+
+script neu sortieren
+	schiffs klassen
+	schiffs typen
+	modul klassen
+	modul typen
+	*flotten 
+	*kampfsimulation
+	
+	(* nur für dev)

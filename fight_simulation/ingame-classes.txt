@@ -1,0 +1,75 @@
+schiff
+	acceleration;
+		bei reisen ist das schiff mit der geringsten beschleunigung ausschlaggebend
+		auf der flucht, werden schiffe mit einer beschleunigung, die schlechter ist, als die der angreifenden flotte zurück gelassen
+	wendigkeit;
+		eine hohe wendigkeit verringert die treffer quote des gegners im kampf
+	volumen;
+		volumen des Schiffes. wichtig für feind radar und evtl hangar befüllung
+	maxHP;
+		die maximal HitPoints
+	aktHP;
+		die aktuellen HitPoints
+	fuelStore;
+		der Maximal wert des treibstofflagers
+	fuelReserves;
+		der aktuell vorhandene Treibstoff
+		ist das der treibstoff aufgebraucht treibt es durch den raum und muss geborgen werden, dazu reicht ein transporter mit neuem treibstoff. Lebenserhaltung läuft noch überlängere zeit weiter, waffen sind allerdings außer betrieb
+	fuelConsumption;
+		der treibstoff verbrauch des Schiffes
+	fleet;
+		die frotten zugehörigkeit (0 ist heimatflotte)
+	master;
+		Schiffs eigentümer
+	commander;
+		Schiffs befehlshaber
+	dockable
+		ob man in hangar docken kann
+	maxCrew;
+		die maximal besatzung, die die lebenserhaltungs systeme beweltigen kann
+	minCrew;
+		die Minimal besatzung die reicht um das schiff zu bewegen
+		
+	getDestroyed()
+		overKill: sind die überflüssigen Damagepoints
+		
+planeten mit für verbündete als tankstelle anbieten mit preis angabe una auf der anderen seite mit maximal preis für spritt für die flotte
+
+jede menge währungen über das universum verteilt und viel mehr ressourcen
+
+taktiken sollten für jedes schiff selbst eingestellt werden
+(evtl auch kammandanten die nicht ihrer befohlenen taktik folgen)
+taktiken
+	offensiv
+		vernichtung
+			+geringere verluste
+			-keine/geringe Beute
+		eroberung
+			+Lagerraum und evtl schiffe
+			-höhere Verluste
+	defensiv
+		beschäftigen
+			+binden andere einheiten
+			+niedrige verluste
+			-machen keinen schaden
+			-werden als erstes abgeschossen
+		sperrfeuer
+			--munitionsverbrauch
+			+bindet andere einheiten
+			+kann gegnerische einheiten zerstören
+			+nur von waffen getroffen werden die eine höhere reichweite haben
+			-ist erstschlagsziel
+		material support
+			+repariert und betankt schiffe im kampf
+			-ist ohne andere schiffe verteidigungslos
+			+kommt nicht als erstes dran
+		Panzerungs Support
+			+lässt defsys auch für kleinere schiffe in der umgebung gelten
+			-chance schaden von CombatShips auf sich zu ziehen (Deckung)
+	passiv
+		flucht
+			+entfernt sich vom Kampf, hat eine chance zu entkommen, wenn beschleunigung besser ist als die der gegnerischen flotte
+			-bzw braucht ein gewisse zeit bis die flotte die schiffe wieder erreicht hat, bis dahin sind sie wehrlos
+		wartet
+			+bei sieg sind sie sofort wieder in der flotte
+			-bei niederlage haben sie keine chance mehr zu entkommen und werden geplündert oder vernichtet
