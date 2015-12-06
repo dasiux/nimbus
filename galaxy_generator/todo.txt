@@ -12,3 +12,9 @@ TODO:
 	vegetation
 	nur besondere typen in sonne
 	sonnentypen als array
+	
+attr
+	magnetfield
+	atmopresure
+	biosphere
+	
